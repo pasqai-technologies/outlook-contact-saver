@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Contact Saver</title>
+  <script src="https://alcdn.msauth.net/browser/2.38.0/js/msal-browser.min.js" type="text/javascript"></script>
+  <script src="config.js"></script>
+</head>
+<body>
+  <p>Redirecting...</p>
+  <script>
+    const msalConfig = {
+      auth: {
+        clientId: CONFIG.clientId,
+        authority: "https://login.microsoftonline.com/common",
+        redirectUri: CONFIG.baseUrl + "/index.html",
+      },
+      cache: { cacheLocation: "sessionStorage", storeAuthStateInCookie: false }
+    };
+    const pca = new msal.PublicClientApplication(msalConfig);
+    pca.initialize().then(() => {
+      pca.handleRedirectPromise().then(() => {
+        window.close();
+      }).catch(console.error);
+    });
+  </script>
+</body>
+</html>

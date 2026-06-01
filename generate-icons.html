@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Generate Icons</title>
+  <style>
+    body { font-family: Segoe UI, Arial, sans-serif; padding: 20px; text-align: center; }
+    .icon-preview { margin: 20px 0; }
+    .icon-preview canvas { border: 1px solid #ccc; margin: 5px; }
+    .download-links a { display: inline-block; margin: 10px; padding: 10px 20px; background: #1F99C2; color: white; text-decoration: none; border-radius: 4px; }
+  </style>
+</head>
+<body>
+  <h1>Icon Generator</h1>
+  <p>Click the links below to download each icon size.</p>
+  <div class="icon-preview" id="canvas-container"></div>
+  <div class="download-links" id="download-links"></div>
+
+  <script>
+    const sizes = [16, 32, 64, 80];
+    const container = document.getElementById('canvas-container');
+    const downloadLinks = document.getElementById('download-links');
+
+    sizes.forEach(function(size) {
+      var canvas = document.createElement('canvas');
+      canvas.width = size;
+      canvas.height = size;
+      container.appendChild(canvas);
+
+      var ctx = canvas.getContext('2d');
+      ctx.fillStyle = '#1F99C2';
+      ctx.fillRect(0, 0, size, size);
+
+      ctx.fillStyle = '#FFFFFF';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      var fontSize = Math.round(size * 0.6);
+      ctx.font = 'bold ' + fontSize + 'px Arial';
+      ctx.fillText('C', size / 2, size / 2);
+
+      var link = document.createElement('a');
+      link.href = canvas.toDataURL('image/png');
+      link.download = 'icon-' + size + '.png';
+      link.textContent = 'Download icon-' + size + '.png';
+      downloadLinks.appendChild(link);
+    });
+  </script>
+</body>
+</html>

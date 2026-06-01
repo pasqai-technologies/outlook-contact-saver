@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:type="MailApp">
+  <Id>550e8400-e29b-41d4-a716-446655440000</Id>
+  <Version>1.0.0</Version>
+  <ProviderName>Pasqai Technologies AB</ProviderName>
+  <DefaultLocale>en-US</DefaultLocale>
+  <DisplayName DefaultValue="Contact Saver"/>
+  <Description DefaultValue="Extract and save contacts from email signatures"/>
+  <IconUrl DefaultValue="https://pasqai-technologies.github.io/outlook-contact-saver/icon-32.png"/>
+  <HighResolutionIconUrl DefaultValue="https://pasqai-technologies.github.io/outlook-contact-saver/icon-64.png"/>
+  <SupportUrl DefaultValue="https://pasqai-technologies.github.io/outlook-contact-saver"/>
+  <AppDomains>
+    <AppDomain>login.microsoftonline.com</AppDomain>
+    <AppDomain>alcdn.msauth.net</AppDomain>
+  </AppDomains>
+  <Hosts><Host Name="Mailbox"/></Hosts>
+  <Requirements><Sets><Set Name="Mailbox" MinVersion="1.1"/></Sets></Requirements>
+  <FormSettings>
+    <Form xsi:type="ItemRead">
+      <DesktopSettings>
+        <SourceLocation DefaultValue="https://pasqai-technologies.github.io/outlook-contact-saver/taskpane.html"/>
+        <RequestedHeight>550</RequestedHeight>
+      </DesktopSettings>
+    </Form>
+  </FormSettings>
+  <Permissions>ReadWriteItem</Permissions>
+  <Rule xsi:type="RuleCollection" Mode="Or">
+    <Rule xsi:type="ItemIs" ItemType="Message" FormType="Read"/>
+  </Rule>
+  <DisableEntityHighlighting>false</DisableEntityHighlighting>
+  <VersionOverrides xmlns="http://schemas.microsoft.com/office/mailappversionoverrides" xsi:type="VersionOverridesV1_0">
+    <Requirements>
+      <bt:Sets DefaultMinVersion="1.3"><bt:Set Name="Mailbox"/></bt:Sets>
+    </Requirements>
+    <Hosts>
+      <Host xsi:type="MailHost">
+        <DesktopFormFactor>
+          <FunctionFile resid="Commands.Url"/>
+          <ExtensionPoint xsi:type="MessageReadCommandSurface">
+            <OfficeTab id="TabDefault">
+              <Group id="msgReadGroup">
+                <Label resid="GroupLabel"/>
+                <Control xsi:type="Button" id="saveContactButton">
+                  <Label resid="TaskpaneButton.Label"/>
+                  <Supertip>
+                    <Title resid="TaskpaneButton.Label"/>
+                    <Description resid="TaskpaneButton.Tooltip"/>
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.16x16"/>
+                    <bt:Image size="32" resid="Icon.32x32"/>
+                    <bt:Image size="80" resid="Icon.80x80"/>
+                  </Icon>
+                  <Action xsi:type="ShowTaskpane">
+                    <TaskpaneId>ButtonId1</TaskpaneId>
+                    <SourceLocation resid="Taskpane.Url"/>
+                  </Action>
+                </Control>
+              </Group>
+            </OfficeTab>
+          </ExtensionPoint>
+        </DesktopFormFactor>
+      </Host>
+    </Hosts>
+    <Resources>
+      <bt:Images>
+        <bt:Image id="Icon.16x16" DefaultValue="https://pasqai-technologies.github.io/outlook-contact-saver/icon-16.png"/>
+        <bt:Image id="Icon.32x32" DefaultValue="https://pasqai-technologies.github.io/outlook-contact-saver/icon-32.png"/>
+        <bt:Image id="Icon.80x80" DefaultValue="https://pasqai-technologies.github.io/outlook-contact-saver/icon-80.png"/>
+      </bt:Images>
+      <bt:Urls>
+        <bt:Url id="Commands.Url" DefaultValue="https://pasqai-technologies.github.io/outlook-contact-saver/index.html"/>
+        <bt:Url id="Taskpane.Url" DefaultValue="https://pasqai-technologies.github.io/outlook-contact-saver/taskpane.html"/>
+      </bt:Urls>
+      <bt:ShortStrings>
+        <bt:String id="GroupLabel" DefaultValue="Contacts"/>
+        <bt:String id="TaskpaneButton.Label" DefaultValue="Save Contact"/>
+      </bt:ShortStrings>
+      <bt:LongStrings>
+        <bt:String id="TaskpaneButton.Tooltip" DefaultValue="Extract and save contact from this email's signature"/>
+      </bt:LongStrings>
+    </Resources>
+  </VersionOverrides>
+</OfficeApp>
