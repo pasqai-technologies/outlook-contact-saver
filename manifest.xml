@@ -2,7 +2,7 @@
 <OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1"
            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
            xsi:type="MailApp">
-  <Id>550e8400-e29b-41d4-a716-446655440000</Id>
+  <Id>7c106ba1-3d43-41c1-9f8f-afe01d9376b9</Id>
   <Version>1.0.0</Version>
   <ProviderName>Pasqai Technologies AB</ProviderName>
   <DefaultLocale>en-US</DefaultLocale>
@@ -37,7 +37,6 @@
     <Hosts>
       <Host xsi:type="MailHost">
         <DesktopFormFactor>
-          <FunctionFile resid="Commands.Url"/>
           <ExtensionPoint xsi:type="MessageReadCommandSurface">
             <OfficeTab id="TabDefault">
               <Group id="msgReadGroup">
@@ -71,8 +70,7 @@
         <bt:Image id="Icon.80x80" DefaultValue="https://pasqai-technologies.github.io/outlook-contact-saver/icon-80.png"/>
       </bt:Images>
       <bt:Urls>
-        <bt:Url id="Commands.Url" DefaultValue="https://pasqai-technologies.github.io/outlook-contact-saver/index.html"/>
-        <bt:Url id="Taskpane.Url" DefaultValue="https://pasqai-technologies.github.io/outlook-contact-saver/taskpane.html"/>
+<bt:Url id="Taskpane.Url" DefaultValue="https://pasqai-technologies.github.io/outlook-contact-saver/taskpane.html"/>
       </bt:Urls>
       <bt:ShortStrings>
         <bt:String id="GroupLabel" DefaultValue="Contacts"/>
